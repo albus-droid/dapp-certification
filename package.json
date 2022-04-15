@@ -1,7 +1,7 @@
 {
   "name": "dapp-certification",
   "version": "0.1.0",
-  "description": "An Ethereum based Certificate Validation",
+  "description": "An Ethereum based certificate validation system",
   "author": "albus",
   "dependencies": {
     "babel-polyfill": "6.26.0",
