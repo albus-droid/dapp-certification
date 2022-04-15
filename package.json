@@ -1,8 +1,8 @@
 {
-  "name": "eth-marketplace",
+  "name": "dapp-certification",
   "version": "0.1.0",
-  "description": "An Ethereum Marketplace",
-  "author": "gregory@dappuniversity.com",
+  "description": "An Ethereum based Certificate Validation",
+  "author": "albus",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
