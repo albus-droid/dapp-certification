@@ -2,6 +2,8 @@ pragma solidity ^0.5.0;
 
 contract Certification {
 
+    bytes32 public _certID;
+
     struct Certificate {
     int32 studentID;
     string studentName;
@@ -30,11 +32,11 @@ contract Certification {
  
 function uploadCert(int32 _studentID, string memory _studentName,string memory _orgName,string memory _courseName, uint256 _expireDate) public {
   
-    require(bytes(_studentID).length > 0);
+    require(_studentID!=0);
     require(bytes(_studentName).length > 0);
     require(bytes(_orgName).length > 0);
     require(bytes(_courseName).length > 0);
-    require(bytes(_expireDate).length > 0);
+    require(_expireDate!=0);
     
     _certID = bytes32(keccak256(abi.encodePacked(_studentID,now)));
 
