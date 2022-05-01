@@ -8,6 +8,7 @@ import Dashboard from "./Components/Dashboard";
 import Services from "./pages/Services";
 import GenerateForm from "./Components/GenerateForm";
 import IssueCertificate from "./pages/IssueCertificate";
+import Verify from "./pages/Verify";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path="/display/certificate/:id" component={Dashboard} />
           <Route path="/services" component={Services} />
           <Route path="/issue-certificate" component={IssueCertificate} />
+          <Route path="/verify-certificate" component={Verify} />
         </Switch>
       </div>
     );

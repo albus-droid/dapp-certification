@@ -5,7 +5,7 @@ import Link from "react-router-dom/Link";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import ChainImage from "../Images/img1.png";
+import ChainImage from "../Images/notver.png";
 
 const styles = (theme) => ({
   hidden: {
@@ -20,11 +20,9 @@ const styles = (theme) => ({
     },
     [theme.breakpoints.up(1150)]: {
       marginLeft: 50,
-      width: 300,
+      width: 1400,
     },
-    height: "13vh",
-    color: "white",
-    backgroundColor: "#4d0057",
+    height: "55vh",
     marginTop: theme.spacing.unit * 6,
     display: "flex",
     flexDirection: "column",
@@ -32,51 +30,48 @@ const styles = (theme) => ({
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
       .spacing.unit * 3}px`,
   },
-  avatar: {
-    margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
-    height: 100,
-    width: 100,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing.unit,
-  },
-  submit: {
-    marginTop: theme.spacing.unit * 3,
-  },
-  media: {
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
-  },
   imgstyles: {
-    maxWidth: "50vw",
-    maxHeight: "60vh",
+    maxWidth: "30vw",
+    maxHeight: "30vh",
     [theme.breakpoints.down(1200)]: {
       marginTop: theme.spacing.unit * 4,
     },
   },
+  heading: {
+    color: "red",
+    maxWidth: "3000vw",
+  },
 });
 
-class Services extends Component {
+class IssueSuccess extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div>
         <Grid container style={{ height: "100%" }}>
-          <Grid className={classes.hidden} item sm={false} md={6}>
-            <img className={classes.imgstyles} src={ChainImage} alt="chain" />
-          </Grid>
+          {/*  */}
           <Grid item sm={12} md={4}>
             <Paper className={classes.paper}>
-              <Link to="/issue-certificate">
-                <h3>Issue Certificates</h3>
-              </Link>
-            </Paper>
-            <Paper className={classes.paper}>
-              <Link to="/verify-certificate">
-                <h3>Verify Certificate</h3>
-              </Link>
+              <Grid className={classes.hidden} item sm={false} md={12}>
+                <h1 className={classes.heading}>
+                  This certificate is not block chain verified.
+                </h1>
+              </Grid>
+              <Grid className={classes.hidden} item sm={false} md={8}>
+                <img
+                  className={classes.imgstyles}
+                  src={ChainImage}
+                  alt="chain"
+                />
+              </Grid>
+              {/* <h2>Certificate Issue Successfull</h2>
+              <h4>
+                Your certificate ID is{" "}
+                <i>
+                  <u>ABC123</u>
+                </i>
+                , Save this ID for future verification.
+              </h4> */}
             </Paper>
           </Grid>
         </Grid>
@@ -85,8 +80,8 @@ class Services extends Component {
   }
 }
 
-Services.propTypes = {
+IssueSuccess.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Services);
+export default withStyles(styles)(IssueSuccess);
