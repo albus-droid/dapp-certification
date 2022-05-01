@@ -6,10 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import SubmitAnimation from "./SubmitAnimation";
-import Certification from '../abis/Certification.json';
-import Web3 from 'web3';
-
-// import { generateCertificate } from "../Utils/apiConnect";
+import { generateCertificate } from "../Utils/apiConnect";
 
 const styles = theme => ({
   container: {
@@ -80,85 +77,71 @@ const styles = theme => ({
 });
 
 class GenerateForm extends React.Component {
-  async componentWillMount() {
-    await this.loadWeb3()
-    await this.loadBlockchainData()
-  }
-
-  async loadWeb3() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum)
-      await window.ethereum.enable()
-    }
-    else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider)
-    }
-    else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
-    }
-  }
-
-  async loadBlockchainData() {
-    const web3 = window.web3
-    // Load account
-    const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
-    // Network ID
-    const networkId = await web3.eth.net.getId()
-    const networkData = Certification.networks[networkId]
-    if(networkData) {
-      const certification = new web3.eth.Contract(Certification.abi, networkData.address)
-      this.setState({ certification })
-      const certID = await certification.methods._certID().call()
-      this.setState({ certID })
-      submitData = event => {
-        event.preventDefault();
-        if (this.state.currentState === "validate") {
-          return;
-        }
-        this.setState({ currentState: "load" });
-        const {
-          studentName,
-          studentID,
-          orgName,
-          courseName,
-          expireOn
-          } =certification.methods.uploadCert().send()
-       
-        
-      };
-      
-      
-    } else {
-      window.alert('Certification contract not deployed to detected network.')
-    }
-  }
-  
-  
   state = {
-    studentName: "",
-    studentID: "",
-    orgName: "",
-    courseName: "",
-    expireOn: null,
-   
+    firstname: "",
+    lastname: "",
+    organization: "FossAsia",
+    orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/FOSSASIA_Logo.svg/600px-FOSSASIA_Logo.svg.png",
+    coursename: "",
+    assignedOn: null,
+    duration: 0,
+    currentState: "normal",
+    emailId: ""
   };
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value
     });
   };
 
-  
+  submitData = event => {
+    event.preventDefault();
+    if (this.state.currentState === "validate") {
+      return;
+    }
+    this.setState({ currentState: "load" });
+    const {
+      firstname,
+      lastname,
+      organization,
+      coursename,
+      assignedOn,
+      duration,
+      emailId
+    } = this.state;
+    let candidateName = `${firstname} ${lastname}`;
+    let assignDate = new Date(assignedOn).getTime();
+    generateCertificate(
+      candidateName,
+      coursename,
+      organization,
+      assignDate,
+      parseInt(duration),
+      emailId
+    )
+      .then(data => {
+        if (data.data !== undefined)
+          this.setState({
+            currentState: "validate",
+            certificateId: data.data.certificateId
+          });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     const { classes } = this.props;
     const {
-      studentName,
-      studentID,
-      orgName,
-      courseName,
-      expireOn
+      firstname,
+      lastname,
+      organization,
+      coursename,
+      duration,
+      currentState,
+      orgLogo,
+      emailId,
+      certificateId
     } = this.state;
     return (
       <Grid container>
@@ -174,89 +157,127 @@ class GenerateForm extends React.Component {
             >
               <Grid item xs={12} sm={12}>
                 <TextField
-                  
-                  id="student-name"
-                  label="Student Name"
-                  placeholder="Name of the student"
-                  className={(classes.courseField, classes.textField)}
-                  defaultValue={studentName}
-                  onChange={this.handleChange("student-name")}
+                  required
+                  id="firstname"
+                  label="First Name"
+                  className={classes.textField}
+                  value={firstname}
+                  onChange={this.handleChange("firstname")}
                   margin="normal"
                   variant="outlined"
                 />
                 <TextField
-                  
-                  id="student-id"
-                  label="Student ID"
-                  placeholder="ID of the student"
-                  className={(classes.courseField, classes.textField)}
-                  defaultValue={studentID}
-                  onChange={this.handleChange("student-id")}
+                  required
+                  id="lastname"
+                  label="Last Name"
+                  className={classes.textField}
+                  value={lastname}
+                  onChange={this.handleChange("lastname")}
                   margin="normal"
                   variant="outlined"
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <TextField
-                  id="org-name"
-                  label="Organization Name"
-                  placeholder="Degree, skill or award.."
-                  className={(classes.courseField, classes.textField)}
-                  defaultValue={orgName}
-                  onChange={this.handleChange("course-name")}
+                  required
+                  id="organization"
+                  label="Organization"
+                  className={classes.textField}
+                  defaultValue={organization}
                   margin="normal"
                   variant="outlined"
+                  InputProps={{
+                    readOnly: true
+                  }}
                 />
                 <TextField
-                  
-                  id="course-name"
-                  label="Course Name"
+                  required
+                  id="certified-for"
+                  label="Certified For"
                   helperText="Any course name or skill for which the certificate is being given."
                   placeholder="Degree, skill or award.."
                   className={(classes.courseField, classes.textField)}
-                  defaultValue={courseName}
-                  onChange={this.handleChange("course-name")}
+                  defaultValue={coursename}
+                  onChange={this.handleChange("coursename")}
                   margin="normal"
                   variant="outlined"
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <TextField
-                  
-                  id="expire-date"
-                  label="Expire Date"
+                  required
+                  id="assigned-date"
+                  label="Assigned Date"
                   type="date"
                   margin="normal"
                   variant="outlined"
-                  onChange={this.handleChange("expire-date")}
+                  onChange={this.handleChange("assignedOn")}
                   className={classes.textField}
-                  defaultValue={expireOn}
                   InputLabelProps={{
                     shrink: true
                   }}
                 />
-                
+                <TextField
+                  required
+                  id="duration"
+                  label="Duration"
+                  helperText="Duration to be provided in years"
+                  value={duration}
+                  onChange={this.handleChange("duration")}
+                  type="number"
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  required
+                  id="email"
+                  label="Email"
+                  className={classes.textField}
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  margin="normal"
+                  variant="outlined"
+                  value={emailId}
+                  onChange={this.handleChange("emailId")}
+                />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <SubmitAnimation
-                  
+                  currentState={currentState}
                   className={classes.submitBtn}
                 />
-                
+                {currentState === "validate" && (
                   <Typography
                     variant="caption"
                     color="inherit"
                     className={classes.submitBtn}
                   >
-                    
+                    Certificate genrated with id {certificateId}
                   </Typography>
-                
+                )}
               </Grid>
-              
             </form>
           </Paper>
         </Grid>
-        
+        <Grid item xs={12} sm={4}>
+          <Paper className={classes.rightpaper}>
+            <div style={{ maxWidth: "90%" }}>
+              <img src={orgLogo} alt="org-logo" style={{ maxWidth: "100%" }} />
+            </div>
+            <div>
+              <Typography variant="h5" color="inherit" noWrap>
+                {organization}
+              </Typography>
+            </div>
+          </Paper>
+        </Grid>
       </Grid>
     );
   }

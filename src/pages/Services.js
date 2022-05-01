@@ -50,8 +50,8 @@ const styles = (theme) => ({
       .spacing.unit * 3}px`,
   },
   imgstyles: {
-    maxWidth: "70vw",
-    maxHeight: "90vh",
+    maxWidth: "50vw",
+    maxHeight: "60vh",
     [theme.breakpoints.down(1200)]: {
       marginTop: theme.spacing.unit * 4,
     },
@@ -64,7 +64,7 @@ class Services extends Component {
     return (
       <div>
         <Grid container style={{ height: "100%" }}>
-          <Grid className={classes.hidden} item sm={false} md={8}>
+          <Grid className={classes.hidden} item sm={false} md={6}>
             <img className={classes.imgstyles} src={ChainImage} alt="chain" />
           </Grid>
           <Grid item sm={12} md={4}>

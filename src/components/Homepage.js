@@ -6,7 +6,7 @@ function Homepage(props) {
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>
-        This is the homepage of Certification webpage.
+        Block Chain Home Page
         <br />
       </p>
     </header>
