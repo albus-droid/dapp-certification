@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import SubmitAnimation from "../Components/SubmitAnimation";
 import { generateCertificate } from "../Utils/apiConnect";
+import orgLogo from "../Images/header.png";
 import IssueSuccess from "./IssueSuccess";
 const styles = (theme) => ({
   container: {
@@ -130,7 +131,6 @@ class IssueCertificate extends React.Component {
       organization,
       coursename,
       currentState,
-      orgLogo,
     } = this.state;
     return (
       <Grid container>
@@ -215,12 +215,35 @@ class IssueCertificate extends React.Component {
                     alt="org-logo"
                     style={{ maxWidth: "100%" }}
                   />
+                  {/* <Typography variant="h5" color="inherit" noWrap>
+                   
+                  </Typography> */}
+                  <p>
+                    <b>Student ID : </b>{" "}
+                    {this.state.student_id
+                      ? this.state.student_id
+                      : "------------------"}{" "}
+                    &nbsp;&nbsp; <b>Student Name : </b>{" "}
+                    {this.state.student_name
+                      ? this.state.student_name
+                      : "----------------"}{" "}
+                  </p>
+                  <p>
+                    <b>Organization Name : </b>{" "}
+                    {this.state.organization
+                      ? this.state.organization
+                      : "----------------------------------------------"}{" "}
+                  </p>
+                  <p>
+                    <b>Course Name : </b>{" "}
+                    {this.state.coursename
+                      ? this.state.coursename
+                      : "--------------------------"}{" "}
+                    <b>Valid Year : </b>{" "}
+                    {this.state.year ? this.state.year : "-------------"}{" "}
+                  </p>
                 </div>
-                <div>
-                  <Typography variant="h5" color="inherit" noWrap>
-                    {organization}
-                  </Typography>
-                </div>
+                <div />
               </Paper>
             </Grid>
           </>

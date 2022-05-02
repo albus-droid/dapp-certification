@@ -56,7 +56,7 @@ class Verify extends Component {
   };
 
   verifyCertificate = () => {
-    if (this.state.certificate_id == "") {
+    if (this.state.certificate_id === "") {
       alert("Please enter your certificate ID");
       return;
     }
