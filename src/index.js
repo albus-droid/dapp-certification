@@ -5,14 +5,15 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+export * from "./App";
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: "#2196f3" }
+    primary: { main: "#2196f3" },
   },
   typography: {
-    useNextVariants: true
-  }
+    useNextVariants: true,
+  },
 });
 
 ReactDOM.render(

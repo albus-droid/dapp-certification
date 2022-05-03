@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import ChainImage from "../Images/verf.png";
+import * as allExports from "../App";
 
 const styles = (theme) => ({
   hidden: {
@@ -26,8 +26,9 @@ const styles = (theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${
+      theme.spacing.unit * 3
+    }px`,
   },
   imgstyles: {
     maxWidth: "30vw",
@@ -42,8 +43,9 @@ const styles = (theme) => ({
   },
 });
 
-class IssueSuccess extends Component {
+class VerifySuccess extends Component {
   render() {
+    console.log(allExports);
     const { classes } = this.props;
     return (
       <div>
@@ -79,8 +81,8 @@ class IssueSuccess extends Component {
   }
 }
 
-IssueSuccess.propTypes = {
+VerifySuccess.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(IssueSuccess);
+export default withStyles(styles)(VerifySuccess);
