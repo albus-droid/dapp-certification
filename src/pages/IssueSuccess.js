@@ -95,7 +95,7 @@ class IssueSuccess extends Component {
       this.setState({ certification });
       console.log(certification.abi);
       console.log(networkData.address);
-      const certID = await certification.methods._certID().call();
+      let certID = await certification.methods._certID().call();
       this.setState({ certID });
       console.log({ certID });
 
@@ -124,8 +124,16 @@ class IssueSuccess extends Component {
       window.alert("Certification contract not deployed to detected network.");
     }
   }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      certID: "",
+    };
+  }
   render() {
     const { classes } = this.props;
+    let certID = this.state.certID;
     return (
       <div>
         <Grid container style={{ height: "100%" }}>
@@ -136,7 +144,7 @@ class IssueSuccess extends Component {
             <Paper className={classes.paper}>
               <h2>Certificate Issue Successfull</h2>
               <h4>
-                Your certificate ID is{this.certID}
+                Your certificate ID is{certID}
                 <i>
                   <u></u>
                 </i>
