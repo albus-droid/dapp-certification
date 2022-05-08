@@ -8,6 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import ChainImage from "../Images/verify.png";
 import VerifySuccess from "./VerifySuccess";
 import Error from "./Error";
+import Certification from "../abis/Certification.json";
+import Web3 from "web3";
 
 const styles = (theme) => ({
   hidden: {
@@ -45,10 +47,67 @@ const styles = (theme) => ({
 });
 
 class Verify extends Component {
-  state = {
-    certificate_id: "",
-    verify_status: "",
-  };
+  async componentWillMount() {
+    await this.loadWeb3();
+    await this.loadBlockchainData();
+  }
+
+  async loadWeb3() {
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum);
+      await window.ethereum.enable();
+    } else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider);
+    } else {
+      window.alert(
+        "Non-Ethereum browser detected. You should consider trying MetaMask!"
+      );
+    }
+  }
+
+  async loadBlockchainData() {
+    const web3 = window.web3;
+    // Load account
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    // Network ID
+    const networkId = await web3.eth.net.getId();
+    const networkData = Certification.networks[networkId];
+    if (networkData) {
+      const certification = new web3.eth.Contract(
+        Certification.abi,
+        networkData.address
+      );
+      this.setState({ certification });
+      console.log(Certification.abi);
+      console.log(networkData.address);
+
+      // this.setState({ decentragram })
+      // const imagesCount = await decentragram.methods.imageCount().call()
+      // this.setState({ imagesCount })
+      // // Load images
+      // for (var i = 1; i <= imagesCount; i++) {
+      //   const image = await decentragram.methods.images(i).call()
+      //   this.setState({
+      //     images: [...this.state.images, image]
+      //   })
+      // }
+      // // Sort images. Show highest tipped images first
+      // this.setState({
+      //   images: this.state.images.sort((a,b) => b.tipAmount - a.tipAmount )
+      // })
+      // this.setState({ loading: false})
+    } else {
+      window.alert("Certification contract not deployed to detected network.");
+    }
+  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      certificate_id: "",
+      verify_status: "",
+    };
+  }
 
   handleChange = (name) => (event) => {
     this.setState({
@@ -61,7 +120,12 @@ class Verify extends Component {
       alert("Please enter your certificate ID");
       return;
     }
-    alert("Your Certificate ID Is : " + this.state.certificate_id);
+
+    const certdetails = this.state.certification.methods
+      .certDetails(this.state.certificate_id)
+      .call();
+    this.setState({ certdetails });
+    console.log(certdetails);
   };
 
   //Sample for show success & Err page

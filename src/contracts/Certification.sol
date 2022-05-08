@@ -39,7 +39,7 @@ contract Certification {
     emit CertCreated(_studentID, _studentName, _orgName,_courseName, _expireDate,now,_certURL,_certID);
   } 
 
-  function certDetails(bytes8 cert_id) public view returns(int32,string memory,string memory,string memory,uint256,uint256,string memory,bytes32) {
+  function certDetails(bytes8 cert_id) public view returns(int32,string memory,string memory,string memory,uint256,uint256,string memory,bytes8) {
     bytes8 byte_id = cert_id;
     Certificate memory temp = certificate[byte_id];
     require(temp.expireDate >= now, "Certificate no longer valid");
