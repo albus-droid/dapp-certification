@@ -115,17 +115,18 @@ class Verify extends Component {
     });
   };
 
-  verifyCertificate = () => {
+  verifyCertificate = async () => {
     if (this.state.certificate_id === "") {
       alert("Please enter your certificate ID");
       return;
     }
 
-    const certdetails = this.state.certification.methods
+    let certdetails = await this.state.certification.methods
       .certDetails(this.state.certificate_id)
       .call();
     this.setState({ certdetails });
-    console.log(certdetails);
+
+    console.log(certdetails[2]);
   };
 
   //Sample for show success & Err page
@@ -192,7 +193,7 @@ class Verify extends Component {
             </Grid>
           </Grid>
         ) : this.state.verify_status === "success" ? (
-          <VerifySuccess />
+          <VerifySuccess certdetails={this.state.certdetails} />
         ) : (
           <Error />
         )}
