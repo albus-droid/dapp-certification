@@ -14,6 +14,9 @@ import { loadBlockchainData } from "../App";
 import Certification from "../abis/Certification.json";
 import Web3 from "web3";
 import * as allExports from "../App";
+import html2canvas from "html2canvas";
+import ReactPDF from "@react-pdf/renderer";
+import jsPDF from "jspdf";
 
 const styles = (theme) => ({
   container: {
@@ -196,6 +199,21 @@ class IssueCertificate extends React.Component {
     //#END
   };
 
+  printDocument() {
+    const input = document.getElementById("divToPrint");
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "in",
+        format: [10, 6],
+      });
+      pdf.addImage(imgData, "JPEG", 0, 0);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("download.pdf");
+    });
+  }
+
   render() {
     const { classes } = this.props;
     const {
@@ -283,7 +301,7 @@ class IssueCertificate extends React.Component {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper className={classes.rightpaper}>
-                <div style={{ maxWidth: "90%" }}>
+                <div id="divToPrint" style={{ maxWidth: "90%" }}>
                   <img
                     src={orgLogo}
                     alt="org-logo"
@@ -317,6 +335,7 @@ class IssueCertificate extends React.Component {
                     {this.state.year ? this.state.year : "-------------"}{" "}
                   </p>
                 </div>
+                <button onClick={this.printDocument}>hi</button>
                 <div />
               </Paper>
             </Grid>
