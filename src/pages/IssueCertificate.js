@@ -208,7 +208,7 @@ class IssueCertificate extends React.Component {
         unit: "in",
         format: [10, 6],
       });
-      pdf.addImage(imgData, "JPEG", 0, 0);
+      pdf.addImage(imgData, "JPEG",0,0,10,6);
       // pdf.output('dataurlnewwindow');
       pdf.save("download.pdf");
     });
