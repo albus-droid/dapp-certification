@@ -9,6 +9,15 @@ import SubmitAnimation from "../Components/SubmitAnimation";
 import { generateCertificate } from "../Utils/apiConnect";
 import orgLogo from "../Images/header.png";
 import IssueSuccess from "./IssueSuccess";
+import App from "../App";
+import { loadBlockchainData } from "../App";
+import Certification from "../abis/Certification.json";
+import Web3 from "web3";
+import * as allExports from "../App";
+import html2canvas from "html2canvas";
+import ReactPDF from "@react-pdf/renderer";
+import jsPDF from "jspdf";
+
 const styles = (theme) => ({
   container: {
     display: "flex",
@@ -36,8 +45,9 @@ const styles = (theme) => ({
     margin: theme.spacing.unit * 5,
     display: "flex",
     flexDirection: "column",
-    padding: `${theme.spacing.unit * 4}px ${theme.spacing.unit * 8}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 4}px ${theme.spacing.unit * 8}px ${
+      theme.spacing.unit * 3
+    }px`,
   },
   rightpaper: {
     [theme.breakpoints.up("sm")]: {
@@ -53,8 +63,9 @@ const styles = (theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${
+      theme.spacing.unit * 3
+    }px`,
   },
   verificationBox: {
     display: "flex",
@@ -78,6 +89,60 @@ const styles = (theme) => ({
 });
 
 class IssueCertificate extends React.Component {
+  async componentWillMount() {
+    await this.loadWeb3();
+    await this.loadBlockchainData();
+  }
+
+  async loadWeb3() {
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum);
+      await window.ethereum.enable();
+    } else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider);
+    } else {
+      window.alert(
+        "Non-Ethereum browser detected. You should consider trying MetaMask!"
+      );
+    }
+  }
+
+  async loadBlockchainData() {
+    const web3 = window.web3;
+    // Load account
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    // Network ID
+    const networkId = await web3.eth.net.getId();
+    const networkData = Certification.networks[networkId];
+    if (networkData) {
+      const certification = new web3.eth.Contract(
+        Certification.abi,
+        networkData.address
+      );
+      this.setState({ certification });
+      console.log(certification.abi);
+      console.log(networkData.address);
+      // this.setState({ decentragram })
+      // const imagesCount = await decentragram.methods.imageCount().call()
+      // this.setState({ imagesCount })
+      // // Load images
+      // for (var i = 1; i <= imagesCount; i++) {
+      //   const image = await decentragram.methods.images(i).call()
+      //   this.setState({
+      //     images: [...this.state.images, image]
+      //   })
+      // }
+      // // Sort images. Show highest tipped images first
+      // this.setState({
+      //   images: this.state.images.sort((a,b) => b.tipAmount - a.tipAmount )
+      // })
+      // this.setState({ loading: false})
+    } else {
+      window.alert("Certification contract not deployed to detected network.");
+    }
+  }
+
   state = {
     componentLoad: "new",
   };
@@ -94,16 +159,27 @@ class IssueCertificate extends React.Component {
       return;
     }
     this.setState({ currentState: "load" });
-    const { student_id, student_name, organization, year, course } = this.state;
+    const { student_id, student_name, organization, year, coursename } =
+      this.state;
     console.log("student id : " + student_id);
     console.log("student name : " + student_name);
     console.log("organization : " + organization);
     console.log("year : " + year);
-    console.log("course : " + course);
+    console.log("coursename: " + coursename);
+    console.log(allExports);
     this.setState({ currentState: "normal" });
     this.setState({ componentLoad: "success" }); //State change for load success page
     //WRITE YOUR CODE HERE
-
+    this.state.certification.methods
+      .uploadCert(
+        student_id,
+        student_name,
+        organization,
+        coursename,
+        year,
+        "www"
+      )
+      .send({ from: this.state.account });
     // generateCertificate(
     //   candidateName,
     //   coursename,
@@ -123,6 +199,21 @@ class IssueCertificate extends React.Component {
     //#END
   };
 
+  printDocument() {
+    const input = document.getElementById("divToPrint");
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "in",
+        format: [10, 6],
+      });
+      pdf.addImage(imgData, "JPEG",0,0,10,6);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("download.pdf");
+    });
+  }
+
   render() {
     const { classes } = this.props;
     const {
@@ -130,6 +221,7 @@ class IssueCertificate extends React.Component {
       student_name,
       organization,
       coursename,
+      year,
       currentState,
     } = this.state;
     return (
@@ -193,7 +285,7 @@ class IssueCertificate extends React.Component {
                       type="text"
                       margin="normal"
                       variant="outlined"
-                      defaultValue={coursename}
+                      defaultValue={year}
                       onChange={this.handleChange("year")}
                       className={classes.textField}
                     />
@@ -209,7 +301,7 @@ class IssueCertificate extends React.Component {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper className={classes.rightpaper}>
-                <div style={{ maxWidth: "90%" }}>
+                <div id="divToPrint" style={{ maxWidth: "90%" }}>
                   <img
                     src={orgLogo}
                     alt="org-logo"
@@ -243,6 +335,7 @@ class IssueCertificate extends React.Component {
                     {this.state.year ? this.state.year : "-------------"}{" "}
                   </p>
                 </div>
+                <button onClick={this.printDocument}>hi</button>
                 <div />
               </Paper>
             </Grid>

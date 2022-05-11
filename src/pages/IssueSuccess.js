@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import ChainImage from "../Images/success.gif";
+import Certification from "../abis/Certification.json";
+import Web3 from "web3";
 
 const styles = (theme) => ({
   hidden: {
@@ -28,8 +29,9 @@ const styles = (theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${
+      theme.spacing.unit * 3
+    }px`,
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -45,8 +47,9 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit * 3,
   },
   media: {
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${
+      theme.spacing.unit * 3
+    }px`,
   },
   imgstyles: {
     maxWidth: "80vw",
@@ -58,8 +61,79 @@ const styles = (theme) => ({
 });
 
 class IssueSuccess extends Component {
+  async componentWillMount() {
+    await this.loadWeb3();
+    await this.loadBlockchainData();
+  }
+
+  async loadWeb3() {
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum);
+      await window.ethereum.enable();
+    } else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider);
+    } else {
+      window.alert(
+        "Non-Ethereum browser detected. You should consider trying MetaMask!"
+      );
+    }
+  }
+
+  async loadBlockchainData() {
+    const web3 = window.web3;
+    // Load account
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    // Network ID
+    const networkId = await web3.eth.net.getId();
+    const networkData = Certification.networks[networkId];
+    if (networkData) {
+      const certification = new web3.eth.Contract(
+        Certification.abi,
+        networkData.address
+      );
+      this.setState({ certification });
+      console.log(certification.abi);
+      console.log(networkData.address);
+      let certID = await certification.methods._certID().call();
+      this.setState({ certID });
+      console.log({ certID });
+
+      const certDetails = await certification.methods
+        .certDetails(certID)
+        .call();
+      this.setState({ certDetails });
+      console.log({ certDetails });
+
+      // this.setState({ decentragram })
+      // const imagesCount = await decentragram.methods.imageCount().call()
+      // this.setState({ imagesCount })
+      // // Load images
+      // for (var i = 1; i <= imagesCount; i++) {
+      //   const image = await decentragram.methods.images(i).call()
+      //   this.setState({
+      //     images: [...this.state.images, image]
+      //   })
+      // }
+      // // Sort images. Show highest tipped images first
+      // this.setState({
+      //   images: this.state.images.sort((a,b) => b.tipAmount - a.tipAmount )
+      // })
+      // this.setState({ loading: false})
+    } else {
+      window.alert("Certification contract not deployed to detected network.");
+    }
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      certID: "",
+    };
+  }
   render() {
     const { classes } = this.props;
+    let certID = this.state.certID;
     return (
       <div>
         <Grid container style={{ height: "100%" }}>
@@ -70,9 +144,9 @@ class IssueSuccess extends Component {
             <Paper className={classes.paper}>
               <h2>Certificate Issue Successfull</h2>
               <h4>
-                Your certificate ID is{" "}
+                Your certificate ID is{certID}
                 <i>
-                  <u>ABC123</u>
+                  <u></u>
                 </i>
                 , Save this ID for future verification.
               </h4>

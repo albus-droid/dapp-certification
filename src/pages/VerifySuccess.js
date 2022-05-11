@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import ChainImage from "../Images/verf.png";
+import Verify from "./Verify";
 
 const styles = (theme) => ({
   hidden: {
@@ -21,17 +21,18 @@ const styles = (theme) => ({
       marginLeft: 50,
       width: 1400,
     },
-    height: "55vh",
+    height: "auto",
     marginTop: theme.spacing.unit * 6,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${
+      theme.spacing.unit * 3
+    }px`,
   },
   imgstyles: {
-    maxWidth: "30vw",
-    maxHeight: "30vh",
+    maxWidth: "20vw",
+    maxHeight: "20vh",
     [theme.breakpoints.down(1200)]: {
       marginTop: theme.spacing.unit * 4,
     },
@@ -42,7 +43,7 @@ const styles = (theme) => ({
   },
 });
 
-class IssueSuccess extends Component {
+class VerifySuccess extends Component {
   render() {
     const { classes } = this.props;
     return (
@@ -53,7 +54,7 @@ class IssueSuccess extends Component {
             <Paper className={classes.paper}>
               <Grid className={classes.hidden} item sm={false} md={12}>
                 <h1 className={classes.heading}>
-                  Your certificate is block chain verified.
+                  Certificate Verification Successfull !
                 </h1>
               </Grid>
               <Grid className={classes.hidden} item sm={false} md={8}>
@@ -63,14 +64,43 @@ class IssueSuccess extends Component {
                   alt="chain"
                 />
               </Grid>
-              {/* <h2>Certificate Issue Successfull</h2>
-              <h4>
-                Your certificate ID is{" "}
-                <i>
-                  <u>ABC123</u>
-                </i>
-                , Save this ID for future verification.
-              </h4> */}
+              <h3>Your certificate details are: </h3>
+              <table>
+                <tbody>
+                  <tr>
+                    <th scope="row">ID</th>
+                    <td>{this.props.certdetails[0]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">NAME</th>
+                    <td>{this.props.certdetails[1]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">ORGANISATION</th>
+                    <td>{this.props.certdetails[2]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">COURSE</th>
+                    <td>{this.props.certdetails[3]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LINK</th>
+                    <td>{this.props.certdetails[4]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">CertID</th>
+                    <td>{this.props.certdetails[5]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Expire Date</th>
+                    <td>{this.props.certdetails[6]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Issue Date</th>
+                    <td>{this.props.certdetails[7]}</td>
+                  </tr>
+                </tbody>
+              </table>
             </Paper>
           </Grid>
         </Grid>
@@ -79,8 +109,8 @@ class IssueSuccess extends Component {
   }
 }
 
-IssueSuccess.propTypes = {
+VerifySuccess.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(IssueSuccess);
+export default withStyles(styles)(VerifySuccess);
