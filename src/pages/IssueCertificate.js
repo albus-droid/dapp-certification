@@ -17,6 +17,7 @@ import * as allExports from "../App";
 import html2canvas from "html2canvas";
 import ReactPDF from "@react-pdf/renderer";
 import jsPDF from "jspdf";
+import Error from "./Error";
 
 const styles = (theme) => ({
   container: {
@@ -169,7 +170,7 @@ class IssueCertificate extends React.Component {
     console.log(allExports);
     this.setState({ currentState: "normal" });
     this.setState({ componentLoad: "success" }); //State change for load success page
-    //WRITE YOUR CODE HERE
+    this.setState({ loading: true });
     this.state.certification.methods
       .uploadCert(
         student_id,
@@ -179,7 +180,11 @@ class IssueCertificate extends React.Component {
         year,
         "www"
       )
-      .send({ from: this.state.account });
+      .send({ from: this.state.account })
+      .on("confirmation", (reciept) => {
+        this.setState({ loading: false });
+      });
+
     // generateCertificate(
     //   candidateName,
     //   coursename,
@@ -208,7 +213,7 @@ class IssueCertificate extends React.Component {
         unit: "in",
         format: [10, 6],
       });
-      pdf.addImage(imgData, "JPEG",0,0,10,6);
+      pdf.addImage(imgData, "JPEG", 0, 0, 10, 6);
       // pdf.output('dataurlnewwindow');
       pdf.save("download.pdf");
     });
@@ -340,6 +345,8 @@ class IssueCertificate extends React.Component {
               </Paper>
             </Grid>
           </>
+        ) : this.state.loading == true ? (
+          <Error />
         ) : (
           <IssueSuccess />
         )}
