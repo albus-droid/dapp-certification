@@ -1,14 +1,17 @@
 import React from "react";
-import logo from "../logo.svg";
+import logo from "../Images/eth2.svg";
 
 function Homepage(props) {
+  
+  
   return (
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Block Chain Home Page
+      <p className="text-style">
+        Dapp-Certification
         <br />
       </p>
+      <p><b>-A Blockchain based certificate Issuing and Validating system-</b></p>
     </header>
   );
 }

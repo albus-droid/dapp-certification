@@ -1,10 +1,42 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 60vmin;
+}
+
+.text-style{
+  font-size: larger;
+  color: rgb(51, 245, 100);
+  position: 'relative';
+  font-variant: "tabular-nums";
+  font-weight:bolder;
+  text-decoration:wavy;
+}
+.grid1{
+  display: grid;
+  grid-auto-flow: column;
+  gap: 4px;
+  align-items: center;
+  justify-items: center;
+}
+    
+.container11{
+  background-image: 
+  url(
+"https://media.istockphoto.com/photos/the-black-and-silver-are-light-gray-with-white-the-gradient-is-the-picture-id1215814221?b=1&k=20&m=1215814221&s=170667a&w=0&h=KfuUG69CnN9ZffWjzrf9tLEP7DdZN52bScUee0kosZY=");
+  position:absolute;
+  top: 60px;
+  right:0px;
+  bottom:0px;
+  left:0px;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: 
+  url(
+"https://i.pinimg.com/originals/ad/f4/13/adf4132c2660e304837035f46c3b0839.gif");
+  
+  background-size: "cover";
+  
   min-height: 91.5vh;
   display: flex;
   flex-direction: column;
