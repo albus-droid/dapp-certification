@@ -18,6 +18,11 @@ import html2canvas from "html2canvas";
 import ReactPDF from "@react-pdf/renderer";
 import jsPDF from "jspdf";
 import Error from "./Error";
+import { FormatItalic } from "@material-ui/icons";
+import { red } from "@material-ui/core/colors";
+import Loading from "./loading";
+
+
 
 const styles = (theme) => ({
   container: {
@@ -27,7 +32,7 @@ const styles = (theme) => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    [theme.breakpoints.up("sm")]: { width: 250 },
+    [theme.breakpoints.up("sm")]: { width: 550 },
     [theme.breakpoints.down("sm")]: { width: 200 },
   },
   dense: {
@@ -306,7 +311,7 @@ class IssueCertificate extends React.Component {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper className={classes.rightpaper}>
-                <div id="divToPrint" style={{ maxWidth: "90%" }}>
+                <div id="divToPrint" style={{ maxWidth: "90%", color:"black",fontStyle:"italic"}}>
                   <img
                     src={orgLogo}
                     alt="org-logo"
@@ -340,13 +345,13 @@ class IssueCertificate extends React.Component {
                     {this.state.year ? this.state.year : "-------------"}{" "}
                   </p>
                 </div>
-                <button onClick={this.printDocument}>hi</button>
+                <button onClick={this.printDocument}>Download</button>
                 <div />
               </Paper>
             </Grid>
           </>
         ) : this.state.loading == true ? (
-          <Error />
+          <Loading />
         ) : (
           <IssueSuccess />
         )}
