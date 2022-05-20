@@ -70,7 +70,7 @@ class Services extends Component {
           <Grid item sm={12} md={4}>
             <Paper className={classes.paper}>
               <Link to="/issue-certificate">
-                <h3>Issue Certificates</h3>
+                <h3>Issue Certificate</h3>
               </Link>
             </Paper>
             <Paper className={classes.paper}>
