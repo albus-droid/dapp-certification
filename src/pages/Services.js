@@ -5,7 +5,7 @@ import Link from "react-router-dom/Link";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import ChainImage from "../Images/certificate2.gif";
+import ChainImage from "../Images/certi.svg";
 
 const styles = (theme) => ({
   hidden: {
@@ -63,11 +63,25 @@ class Services extends Component {
     const { classes } = this.props;
     return (
       <div className="container11">
-        <Grid container style={{ height: "100%" }}>
-          {/* <Grid className={classes.hidden} item sm={false} md={6}>
+        <Link to="/issue-certificate">
+     <button className="button1">
+          <b >ISSUE CERTIFICATE</b>
+     </button>
+ </Link>
+ <Link to="/verify-certificate">
+     <button className="button2">
+     <b >VERIFY CERTIFICATE</b>
+     </button>
+ </Link>
+
+
+
+
+        {/* <Grid container style={{ height: "100%" }}>
+          <Grid className={classes.hidden} item sm={false} md={1} xs={6}  >
             <img className={classes.imgstyles} src={ChainImage} alt="chain" />
-          </Grid> */}
-          <Grid className="grid1">
+          </Grid>
+          <Grid className="grid1" xs={6} sm={3}>
             <Paper className={classes.paper}>
               <Link to="/issue-certificate">
                 <h3>Issue Certificate</h3>
@@ -79,7 +93,7 @@ class Services extends Component {
               </Link>
             </Paper>
           </Grid>
-        </Grid>
+        </Grid> */}
       </div>
     );
   }
