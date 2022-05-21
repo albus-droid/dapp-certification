@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../Images/eth2.svg";
+import logo from "../logo.svg";
 
 function Homepage(props) {
   
@@ -11,7 +11,7 @@ function Homepage(props) {
         Dapp-Certification
         <br />
       </p>
-      <p><b>-A Blockchain based certificate Issuing and Validating system-</b></p>
+      <p className="text-style"><b>-A Blockchain based certificate Issuing and Validating system-</b></p>
     </header>
   );
 }

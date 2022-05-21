@@ -9,8 +9,8 @@ function PreLoader1() {
 
     <>
        
-        <ReactLoading
-          
+        <ReactLoading className="reactloading"
+         
           type={"bars"}
           color={"#03fc4e"}
           height={100}
