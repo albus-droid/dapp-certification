@@ -5,7 +5,7 @@ import Link from "react-router-dom/Link";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import ChainImage from "../Images/certificate2.gif";
+import ChainImage from "../Images/img1.png";
 
 const styles = (theme) => ({
   hidden: {
@@ -50,7 +50,7 @@ const styles = (theme) => ({
       .spacing.unit * 3}px`,
   },
   imgstyles: {
-    maxWidth: "60vw",
+    maxWidth: "50vw",
     maxHeight: "60vh",
     [theme.breakpoints.down(1200)]: {
       marginTop: theme.spacing.unit * 4,
@@ -62,12 +62,12 @@ class Services extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="container11">
+      <div>
         <Grid container style={{ height: "100%" }}>
-          {/* <Grid className={classes.hidden} item sm={false} md={6}>
+          <Grid className={classes.hidden} item sm={false} md={6}>
             <img className={classes.imgstyles} src={ChainImage} alt="chain" />
-          </Grid> */}
-          <Grid className="grid1">
+          </Grid>
+          <Grid item sm={12} md={4}>
             <Paper className={classes.paper}>
               <Link to="/issue-certificate">
                 <h3>Issue Certificate</h3>

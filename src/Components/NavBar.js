@@ -189,7 +189,7 @@ class NavBar extends React.Component {
               color="inherit"
               noWrap
             >
-              Dapp-Certify
+              CertifyBlock
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -205,12 +205,10 @@ class NavBar extends React.Component {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+              <IconButton color="inherit">Home</IconButton>
+              <IconButton color="inherit">About</IconButton>
               <IconButton color="inherit">
-              <Link to="/">Home</Link>
-              </IconButton>
-              {/* <IconButton color="inherit">About</IconButton> */}
-              <IconButton color="inherit">
-                <Link to="/services">Services</Link>
+                <Link to="/services">Services (Team)</Link>
               </IconButton>
               {/* <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
