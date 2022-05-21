@@ -120,13 +120,18 @@ class Verify extends Component {
       alert("Please enter your certificate ID");
       return;
     }
+try{
+
 
     let certdetails = await this.state.certification.methods
       .certDetails(this.state.certificate_id)
       .call();
     this.setState({ certdetails });
+    this.showSuccess()
+}catch(err){this.showErr()
 
-    console.log(certdetails[2]);
+}
+    
   };
 
   //Sample for show success & Err page
@@ -170,13 +175,14 @@ class Verify extends Component {
                   </Button>
                 </Grid>
               </Paper>
-              <Button
+              
+              {/* <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={this.showSuccess}
+                
               >
                 Success
               </Button>
@@ -189,7 +195,7 @@ class Verify extends Component {
                 onClick={this.showErr}
               >
                 Err
-              </Button>
+              </Button> */}
             </Grid>
           </Grid>
         ) : this.state.verify_status === "success" ? (
