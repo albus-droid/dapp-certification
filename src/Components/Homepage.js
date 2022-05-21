@@ -11,7 +11,7 @@ function Homepage(props) {
         Dapp-Certification
         <br />
       </p>
-      <p className="text-style"><b>-A Blockchain based certificate Issuing and Validating system-</b></p>
+      <p className="text-style"><b>-A Decentraised Application for Certificate Issuing and Verification-</b></p>
     </header>
   );
 }
