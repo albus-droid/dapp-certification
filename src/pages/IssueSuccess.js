@@ -142,13 +142,13 @@ class IssueSuccess extends Component {
           </Grid> */}
           <Grid className="grid1"  item sm={12} md={4}>
             <Paper className={classes.paper}>
-              <h2>Certificate Issue Successfull</h2>
-              <h4>
+              <h2  className="certigrid2">Certificate Issue Successfull</h2>
+              <h4 className="certigrid2">
                 <bd>Your certificate ID is <u>{certID}</u></bd>
                 <i>
                   <u></u>
                 </i><br></br>
-                --------Save this ID for future verification--------
+                Save this ID for future verification
               </h4>
             </Paper>
           </Grid>

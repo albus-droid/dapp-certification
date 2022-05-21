@@ -72,6 +72,7 @@
   height: 60vmin;
 }
 .text-style1{
+  text-align: center;
   
   font-weight: 900;
   font-size: xx-large;
@@ -90,11 +91,9 @@
   text-shadow: 0 0 4px rgb(79, 217, 252);
   font-weight: 900;
   font-size: xx-large;
+  color: #7bd5ff;
   
-  background: #0D0000;
-background: repeating-radial-gradient(circle farthest-side at center center, #0D0000 0%, #E5EBEE 97%, #D7DEE3 47%, #F5F7F9 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  
 /* text-shadow: 4px 2px 1px red; */
 
 
@@ -124,11 +123,26 @@ background: repeating-radial-gradient(circle farthest-side at center center, #0D
   margin: -250px 0 0 -250px;
   
 }
+
 .certigrid{
-  top: 50%;
-  left: 100%;
-  right:50%;
-  bottom:50%;
+  
+  left: 20%;
+  right:20%;
+  margin: 30px;
+  display: flex;
+  padding: 16px 24px 24px;
+  /* max-width: 60%; */
+  min-width: 60%;
+  align-items: center;
+  flex-direction: column;
+}
+.certigrid1{
+  text-align: center;
+  font-size: 30px;
+}
+.certigrid2{
+  text-align: center;
+  font-size: 20px;
 }
 
 .button1{
@@ -138,6 +152,8 @@ background: repeating-radial-gradient(circle farthest-side at center center, #0D
   right:300%;
   bottom:50%;
   top: 45%;
+  text-align: center;
+            font-size: 20px;
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -210,6 +226,8 @@ background: repeating-radial-gradient(circle farthest-side at center center, #0D
   right:50%;
   bottom:50%;
   top: 45%;
+  text-align: center;
+            font-size: 20px;
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -304,6 +322,10 @@ background: repeating-radial-gradient(circle farthest-side at center center, #0D
   bottom:0px;
   left:0px;
 }
+.form{
+  text-align: center;
+  display: inline-block;
+}
 .container3{
   display: grid;
   grid-auto-flow: row;
@@ -312,7 +334,7 @@ background: repeating-radial-gradient(circle farthest-side at center center, #0D
   justify-items: center;
   background-image: 
   url(
-"https://acegif.com/wp-content/gif/confetti-43.gif");
+"https://assets.website-files.com/612fcc9949d1ef1bf1884fe1/612fcc9949d1ef9780885025_confetti.gif");
   position:absolute;
   top: 60px;
   right:0px;

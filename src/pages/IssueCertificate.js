@@ -238,7 +238,7 @@ class IssueCertificate extends React.Component {
       <Grid className="container2" container>
         {this.state.componentLoad === "new" ? (
           <>
-            <Grid  item xs={12} sm={6}>
+            <Grid className="form"  item xs={12} sm={6}>
               <Paper className={classes.paper}>
                 <Typography variant="h3" color="inherit">
                  <b>  <br>
@@ -310,9 +310,9 @@ class IssueCertificate extends React.Component {
                 </form>
               </Paper>
             </Grid>
-            <Grid className="certigrid" item xs={12} sm={6}>
-              <Paper className={classes.rightpaper}>
-                <div id="divToPrint" style={{ maxWidth: "90%", color:"black",fontStyle:"bold"}}>
+            <Grid   item xs={12} sm={6}>
+              <Paper className="certigrid">
+                <div  id="divToPrint" style={{ maxWidth: "90%", color:"black",fontStyle:"bold"}}>
                   <img
                     src={orgLogo}
                     alt="org-logo"
@@ -321,7 +321,7 @@ class IssueCertificate extends React.Component {
                   {/* <Typography variant="h5" color="inherit" noWrap>
                    
                   </Typography> */}
-                  <p>
+                  <p className="certigrid1">
                     <b>Student ID : </b>{" "}
                     {this.state.student_id
                       ? this.state.student_id
@@ -331,13 +331,13 @@ class IssueCertificate extends React.Component {
                       ? this.state.student_name
                       : "----------------"}{" "}
                   </p>
-                  <p>
+                  <p className="certigrid1">
                     <b>Organization Name : </b>{" "}
                     {this.state.organization
                       ? this.state.organization
                       : "----------------------------------------------"}{" "}
                   </p>
-                  <p>
+                  <p className="certigrid1">
                     <b>Course Name : </b>{" "}
                     {this.state.coursename
                       ? this.state.coursename
