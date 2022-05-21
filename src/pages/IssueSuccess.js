@@ -136,19 +136,19 @@ class IssueSuccess extends Component {
     let certID = this.state.certID;
     return (
       <div>
-        <Grid container style={{ height: "100%" }}>
-          <Grid className={classes.hidden} item sm={false} md={8}>
+        <Grid  className="container3" container style={{ height: "100%" }}>
+          {/* <Grid className={classes.hidden} item sm={false} md={8}>
             <img className={classes.imgstyles} src={ChainImage} alt="chain" />
-          </Grid>
-          <Grid item sm={12} md={4}>
+          </Grid> */}
+          <Grid className="grid1"  item sm={12} md={4}>
             <Paper className={classes.paper}>
               <h2>Certificate Issue Successfull</h2>
               <h4>
-                Your certificate ID is{certID}
+                <bd>Your certificate ID is <u>{certID}</u></bd>
                 <i>
                   <u></u>
-                </i>
-                , Save this ID for future verification.
+                </i><br></br>
+                --------Save this ID for future verification--------
               </h4>
             </Paper>
           </Grid>
