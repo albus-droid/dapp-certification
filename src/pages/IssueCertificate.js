@@ -6,23 +6,14 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import SubmitAnimation from "../Components/SubmitAnimation";
-import { generateCertificate } from "../Utils/apiConnect";
 import orgLogo from "../Images/header.png";
 import IssueSuccess from "./IssueSuccess";
-import App from "../App";
-import { loadBlockchainData } from "../App";
 import Certification from "../abis/Certification.json";
 import Web3 from "web3";
 import * as allExports from "../App";
 import html2canvas from "html2canvas";
-import ReactPDF from "@react-pdf/renderer";
 import jsPDF from "jspdf";
-import Error from "./Error";
-import { FormatItalic } from "@material-ui/icons";
-import { red } from "@material-ui/core/colors";
 import Loading from "./loading";
-
-
 
 const styles = (theme) => ({
   container: {
@@ -238,11 +229,13 @@ class IssueCertificate extends React.Component {
       <Grid className="container2" container>
         {this.state.componentLoad === "new" ? (
           <>
-            <Grid className="form"  item xs={12} sm={6}>
+            <Grid className="form" item xs={12} sm={6}>
               <Paper className={classes.paper}>
                 <Typography variant="h3" color="inherit">
-                 <b>  <br>
-                 </br>Certificate Issue Form</b> 
+                  <b>
+                    {" "}
+                    <br></br>Certificate Issue Form
+                  </b>
                 </Typography>
                 <form
                   className={classes.container}
@@ -310,9 +303,12 @@ class IssueCertificate extends React.Component {
                 </form>
               </Paper>
             </Grid>
-            <Grid   item xs={12} sm={6}>
+            <Grid item xs={12} sm={6}>
               <Paper className="certigrid">
-                <div  id="divToPrint" style={{ maxWidth: "90%", color:"black",fontStyle:"bold"}}>
+                <div
+                  id="divToPrint"
+                  style={{ maxWidth: "90%", color: "black", fontStyle: "bold" }}
+                >
                   <img
                     src={orgLogo}
                     alt="org-logo"
@@ -346,12 +342,14 @@ class IssueCertificate extends React.Component {
                     {this.state.year ? this.state.year : "-------------"}{" "}
                   </p>
                 </div>
-                <button className="button3" onClick={this.printDocument}>Download</button>
+                <button className="button3" onClick={this.printDocument}>
+                  Download
+                </button>
                 <div />
               </Paper>
             </Grid>
           </>
-        ) : this.state.loading == true ? (
+        ) : this.state.loading === true ? (
           <Loading />
         ) : (
           <IssueSuccess />

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import ChainImage from "../Images/success.gif";
 import Certification from "../abis/Certification.json";
 import Web3 from "web3";
 
@@ -136,18 +135,21 @@ class IssueSuccess extends Component {
     let certID = this.state.certID;
     return (
       <div>
-        <Grid  className="container3" container style={{ height: "100%" }}>
+        <Grid className="container3" container style={{ height: "100%" }}>
           {/* <Grid className={classes.hidden} item sm={false} md={8}>
             <img className={classes.imgstyles} src={ChainImage} alt="chain" />
           </Grid> */}
-          <Grid className="grid1"  item sm={12} md={4}>
+          <Grid className="grid1" item sm={12} md={4}>
             <Paper className={classes.paper}>
-              <h2  className="certigrid2">Certificate Issue Successfull</h2>
+              <h2 className="certigrid2">Certificate Issue Successfull</h2>
               <h4 className="certigrid2">
-                <bd>Your certificate ID is <u>{certID}</u></bd>
+                <bd>
+                  Your certificate ID is <u>{certID}</u>
+                </bd>
                 <i>
                   <u></u>
-                </i><br></br>
+                </i>
+                <br></br>
                 Save this ID for future verification
               </h4>
             </Paper>

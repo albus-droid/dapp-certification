@@ -9,41 +9,39 @@ import Services from "./pages/Services";
 import GenerateForm from "./Components/GenerateForm";
 import IssueCertificate from "./pages/IssueCertificate";
 import Verify from "./pages/Verify";
-import Certification from "./abis/Certification.json"
-import Web3 from 'web3';
+import Certification from "./abis/Certification.json";
+import Web3 from "web3";
 
 class App extends Component {
-
   async componentWillMount() {
-    await this.loadWeb3()
-    await this.loadBlockchainData()
+    await this.loadWeb3();
+    await this.loadBlockchainData();
   }
 
   async loadWeb3() {
     if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum)
-      await window.ethereum.enable()
-    }
-    else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider)
-    }
-    else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+      window.web3 = new Web3(window.ethereum);
+      await window.ethereum.enable();
+    } else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider);
+    } else {
+      window.alert(
+        "Non-Ethereum browser detected. You should consider trying MetaMask!"
+      );
     }
   }
 
   async loadBlockchainData() {
-    const web3 = window.web3
+    const web3 = window.web3;
     // Load account
-    const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
     // Network ID
-    const networkId = await web3.eth.net.getId()
-    const networkData = Certification.networks[networkId]
-    if(networkData) {
-      const certification = new web3.eth.Contract(Certification.abi, networkData.address)
-      console.log(Certification.abi)
-      console.log(networkData.address)
+    const networkId = await web3.eth.net.getId();
+    const networkData = Certification.networks[networkId];
+    if (networkData) {
+      console.log(Certification.abi);
+      console.log(networkData.address);
 
       // this.setState({ decentragram })
       // const imagesCount = await decentragram.methods.imageCount().call()
@@ -61,7 +59,7 @@ class App extends Component {
       // })
       // this.setState({ loading: false})
     } else {
-      window.alert('Certification contract not deployed to detected network.')
+      window.alert("Certification contract not deployed to detected network.");
     }
   }
 
@@ -81,8 +79,6 @@ class App extends Component {
       </div>
     );
   }
-  
 }
 
 export default App;
-
