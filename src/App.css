@@ -306,6 +306,47 @@
   bottom:0px;
   left:0px;
 }
+.verifygrid{
+  
+  position:absolute;
+  top:60px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  background: linear-gradient(183deg, #EF0606 0%, #000000 83%);
+}
+.verifygrid1{
+  position:relative;
+  top: 60px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.verifygrid2{
+  position:relative;
+  top: 60px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  
+  
+  align-content: center;
+}
+.verifygrid3{
+  font-size: x-large;
+  font-weight: bolder;
+  top: 50px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  position: relative;
+  
+  
+}
+
 .container2{
   display: grid;
   grid-auto-flow: row;

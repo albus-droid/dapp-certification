@@ -145,16 +145,17 @@ try{
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className="verifygrid" >
         {this.state.verify_status === "" ? (
-          <Grid container style={{ height: "100%" }}>
-            <Grid className={classes.hidden} item sm={false} md={4}>
+          // <Grid  container style={{ height: "100%" }}></Grid>
+          <Grid className="verifygrid1" >
+            {/* <Grid className={classes.hidden} item sm={false} md={4}>
               <img className={classes.imgstyles} src={ChainImage} alt="chain" />
-            </Grid>
-            <Grid item sm={12} md={8}>
+            </Grid> */}
+            <Grid className="verifygrid4" item sm={12} md={8}>
               <Paper className={classes.paper}>
-                <h2>Verify Certificate</h2>
-                <Grid item xs={12} sm={12}>
+                <h2 className="verifygrid3">Verify Certificate </h2>
+                <Grid className="verifygrid2" item xs={12} sm={12}>
                   <TextField
                     label="Copy The Certificate ID Here"
                     className={classes.textField}

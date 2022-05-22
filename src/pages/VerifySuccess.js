@@ -54,7 +54,7 @@ class VerifySuccess extends Component {
             <Paper className={classes.paper}>
               <Grid className={classes.hidden} item sm={false} md={12}>
                 <h1 className={classes.heading}>
-                  Certificate Verification Successfull !
+                  Certificate Verification Successfull
                 </h1>
               </Grid>
               <Grid className={classes.hidden} item sm={false} md={8}>
