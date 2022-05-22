@@ -172,7 +172,7 @@ class NavBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="red">
           <Toolbar>
             <IconButton
               className={classes.menuButton}

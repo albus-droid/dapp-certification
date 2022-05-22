@@ -84,19 +84,19 @@ class VerifySuccess extends Component {
                     <td>{this.props.certdetails[3]}</td>
                   </tr>
                   <tr>
-                    <th scope="row">LINK</th>
-                    <td>{this.props.certdetails[4]}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">CertID</th>
-                    <td>{this.props.certdetails[5]}</td>
-                  </tr>
-                  <tr>
                     <th scope="row">Expire Date</th>
-                    <td>{this.props.certdetails[6]}</td>
+                    <td>{this.props.certdetails[4]/60/60/24/365+1970}</td>
                   </tr>
                   <tr>
                     <th scope="row">Issue Date</th>
+                    <td>{this.props.certdetails[5]/60/60/24/365+1970}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LINK</th>
+                    <td>{this.props.certdetails[6]}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">CertID</th>
                     <td>{this.props.certdetails[7]}</td>
                   </tr>
                 </tbody>
