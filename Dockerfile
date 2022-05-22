@@ -14,6 +14,8 @@ RUN npm install --production
 
 COPY . .
 
+ENV PORT=7545
+
 EXPOSE 7545
 
 EXPOSE 3000
