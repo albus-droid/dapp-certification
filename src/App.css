@@ -1,6 +1,6 @@
 .hero-container {
   /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
-  background: linear-gradient(161deg, #EC0101 0%, #171616 60%);
+  background: linear-gradient(161deg, #ec0101 0%, #171616 60%);
   height: 100vh;
   width: 100%;
   display: flex;
@@ -21,8 +21,8 @@
   margin-top: 8px;
   color: #fff;
   font-size: 32px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .hero-btns {
@@ -64,102 +64,55 @@
   }
 }
 
-
-
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-<<<<<<< HEAD
-  height: 40vmin;
-||||||| 65bd89f
   height: 60vmin;
 }
-
-.text-style{
-  font-size: larger;
-  color: rgb(51, 245, 100);
-  position: 'relative';
-  font-variant: "tabular-nums";
-  font-weight:bolder;
-  text-decoration:wavy;
-}
-.grid1{
-  display: grid;
-  grid-auto-flow: column;
-  gap: 4px;
-  align-items: center;
-  justify-items: center;
-}
-    
-.container11{
-  background-image: 
-  url(
-"https://media.istockphoto.com/photos/the-black-and-silver-are-light-gray-with-white-the-gradient-is-the-picture-id1215814221?b=1&k=20&m=1215814221&s=170667a&w=0&h=KfuUG69CnN9ZffWjzrf9tLEP7DdZN52bScUee0kosZY=");
-  position:absolute;
-  top: 60px;
-  right:0px;
-  bottom:0px;
-  left:0px;
-=======
-  height: 60vmin;
-}
-.text-style1{
+.text-style1 {
   text-align: center;
-  
+
   font-weight: 900;
   font-size: xx-large;
-  
-  background: #00FF00;
-  background: linear-gradient(to left, #00FF00 0%, #00FFFF 100%);
+
+  background: #00ff00;
+  background: linear-gradient(to left, #00ff00 0%, #00ffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-/* text-shadow: 4px 2px 1px red; */
-
-
-  
+  /* text-shadow: 4px 2px 1px red; */
 }
 
-.text-style{
+.text-style {
   text-shadow: 0 0 4px rgb(79, 217, 252);
   font-weight: 900;
   font-size: xx-large;
   color: #7bd5ff;
-  
-  
-/* text-shadow: 4px 2px 1px red; */
 
-
-  
+  /* text-shadow: 4px 2px 1px red; */
 }
 
-.reactloading{
- 
+.reactloading {
   display: inline-block;
   position: fixed;
   width: 80px;
   height: 80px;
   margin-left: 865px;
   margin-right: 50px;
-
-
 }
-.grid1{
+.grid1 {
   position: absolute;
   width: 300px;
   height: 200px;
   z-index: 15;
   top: 50%;
   left: 50%;
-  right:50%;
-  bottom:50%;
+  right: 50%;
+  bottom: 50%;
   margin: -250px 0 0 -250px;
-  
 }
 
-.certigrid{
-  
+.certigrid {
   left: 20%;
-  right:20%;
+  right: 20%;
   margin: 30px;
   display: flex;
   padding: 16px 24px 24px;
@@ -168,24 +121,24 @@
   align-items: center;
   flex-direction: column;
 }
-.certigrid1{
+.certigrid1 {
   text-align: center;
   font-size: 30px;
 }
-.certigrid2{
+.certigrid2 {
   text-align: center;
   font-size: 20px;
 }
 
-.button1{
-  height:100px;
-    width:200px;
+.button1 {
+  height: 100px;
+  width: 200px;
   left: -20%;
-  right:300%;
-  bottom:50%;
+  right: 300%;
+  bottom: 50%;
   top: 45%;
   text-align: center;
-            font-size: 20px;
+  font-size: 20px;
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -251,15 +204,15 @@
   top: 0;
   border-radius: 10px;
 }
-.button2{
-  height:100px;
-    width:200px;
+.button2 {
+  height: 100px;
+  width: 200px;
   left: 20%;
-  right:50%;
-  bottom:50%;
+  right: 50%;
+  bottom: 50%;
   top: 45%;
   text-align: center;
-            font-size: 20px;
+  font-size: 20px;
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -326,88 +279,69 @@
   border-radius: 10px;
 }
 
-    
-.container11{
-  background: linear-gradient(161deg, #EC0101 0%, #171616 60%);
-  /* background-image: 
-  url(
-"https://static.vecteezy.com/system/resources/previews/002/504/349/large_2x/red-and-dark-blue-shaded-gradient-background-free-photo.jpg"); */
-  position:absolute;
-  top: 60px;
-  right:0px;
-  bottom:0px;
-  left:0px;
->>>>>>> 182baaef8f8d52cac7626c1f2c7cde5f2482aa35
-}
-<<<<<<< HEAD
-
-.App-header {
-  background-color: #282c34;
-||||||| 65bd89f
-
-.App-header {
-  background-image: 
-  url(
-"https://i.pinimg.com/originals/ad/f4/13/adf4132c2660e304837035f46c3b0839.gif");
-  
-  background-size: "cover";
-  
-=======
-.container2{
-  display: grid;
-  grid-auto-flow: row;
-  gap: 0px;
-  align-items: center;
-  justify-items: center;
-  background: linear-gradient(90deg, #EC0101 0%, #171616 60%);
+.container11 {
+  background: linear-gradient(161deg, #ec0101 0%, #171616 60%);
   /* background-image: 
   url(
 "https://static.vecteezy.com/system/resources/previews/002/504/349/large_2x/red-and-dark-blue-shaded-gradient-background-free-photo.jpg"); */
   position: absolute;
   top: 60px;
-  right:0px;
-  bottom:0px;
-  left:0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
-.form{
-  text-align: center;
-  display: inline-block;
-}
-.container3{
+.container2 {
   display: grid;
   grid-auto-flow: row;
   gap: 0px;
   align-items: center;
   justify-items: center;
-  background-image: 
+  background: linear-gradient(90deg, #ec0101 0%, #171616 60%);
+  /* background-image: 
   url(
-"https://assets.website-files.com/612fcc9949d1ef1bf1884fe1/612fcc9949d1ef9780885025_confetti.gif");
-  position:absolute;
+"https://static.vecteezy.com/system/resources/previews/002/504/349/large_2x/red-and-dark-blue-shaded-gradient-background-free-photo.jpg"); */
+  position: absolute;
   top: 60px;
-  right:0px;
-  bottom:0px;
-  left:0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
-.grid1{
+.form {
+  text-align: center;
+  display: inline-block;
+}
+.container3 {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0px;
+  align-items: center;
+  justify-items: center;
+  background-image: url("https://assets.website-files.com/612fcc9949d1ef1bf1884fe1/612fcc9949d1ef9780885025_confetti.gif");
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.grid1 {
   top: 150px;
-  right:100px;
-  bottom:100px;
-  left:865px;
+  right: 100px;
+  bottom: 100px;
+  left: 865px;
   align-items: center;
   width: 200px;
-  
+
   display: grid;
   justify-content: center;
 }
 .App-header {
-  background: radial-gradient( #EC0101 0%, #171616 83%);
+  background: radial-gradient(#ec0101 0%, #171616 83%);
   /* background-image: 
   url(
 "https://wallpapercave.com/uwp/uwp2181382.gif"); */
-  
+
   background-size: "cover";
-  
->>>>>>> 182baaef8f8d52cac7626c1f2c7cde5f2482aa35
+
   min-height: 91.5vh;
   display: flex;
   flex-direction: column;
@@ -437,10 +371,9 @@
   color: inherit;
 }
 
-
 .button3 {
-  height:10px;
-  width:300px;
+  height: 10px;
+  width: 300px;
   align-items: center;
   appearance: none;
   background-clip: padding-box;
@@ -453,7 +386,7 @@
   display: inline-block;
   flex-direction: row;
   flex-shrink: 0;
-  font-family: Eina01,sans-serif;
+  font-family: Eina01, sans-serif;
   font-size: 16px;
   font-weight: 800;
   justify-content: center;
@@ -517,7 +450,11 @@
 }
 
 .button3:hover:not(:disabled):before {
-  background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 58, 19) 100%);
+  background: linear-gradient(
+    92.83deg,
+    rgb(255, 116, 38) 0%,
+    rgb(249, 58, 19) 100%
+  );
 }
 
 .button3:hover:not(:disabled):after {
@@ -534,7 +471,12 @@
 }
 
 .button3:active:not(:disabled):before {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
 }
 
 .button3:active:not(:disabled):after {
@@ -547,7 +489,7 @@
 
 .button3:disabled {
   cursor: default;
-  opacity: .24;
+  opacity: 0.24;
 }
 
 /*Actual Style*/
@@ -639,7 +581,6 @@
   transform: translateX(-130%) rotate(90deg);
   border-radius: 50% 50% 50% 50% / 20%;
 }
-
 
 /*--shadow--*/
 .o-circle__sign--success .o-circle__sign::after {
@@ -734,7 +675,6 @@
     @Media Queries
 +++++++++++++++++++++*/
 
-
 #border {
   fill: white;
   stroke: black;
@@ -779,7 +719,6 @@
   font-size: 20px;
   font-weight: bold;
 }
-
 
 .container {
   text-align: center;
