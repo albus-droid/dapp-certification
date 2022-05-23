@@ -5,7 +5,7 @@ import Link from "react-router-dom/Link";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import ChainImage from "../Images/notver.png";
+import ChainImage from "../Images/notver.gif";
 
 const styles = (theme) => ({
   hidden: {
@@ -47,7 +47,7 @@ class IssueSuccess extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className="errorgrid">
         <Grid container style={{ height: "100%" }}>
           {/*  */}
           <Grid item sm={12} md={4}>

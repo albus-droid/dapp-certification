@@ -69,17 +69,17 @@ class Services extends Component {
       {/* <p className="text-style1">Here you GO!</p> */}
       <div className='hero-btns'>
       <Link to="/issue-certificate">
-//      <button className="button1">
+      <button className="button1">
 //           <b >ISSUE CERTIFICATE</b>
 //      </button>
-//  </Link>
+  </Link>
       
          
-//        <Link to="/verify-certificate">
-//      <button className="button2">
+       <Link to="/verify-certificate">
+  <button className="button2">
 //      <b >VERIFY CERTIFICATE</b>
 //      </button>
-//  </Link>
+ </Link>
         {/* <Button
           className='btns'
           buttonStyle='btn--outline'

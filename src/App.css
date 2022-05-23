@@ -325,6 +325,11 @@
   justify-content: center;
   align-content: center;
 }
+.errorgrid{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
 .verifygrid2{
   position:relative;
   top: 60px;

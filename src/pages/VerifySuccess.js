@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import ChainImage from "../Images/verf.png";
+import ChainImage from "../Images/verif.gif";
 import Verify from "./Verify";
 
 const styles = (theme) => ({
@@ -47,11 +47,11 @@ class VerifySuccess extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <Grid container style={{ height: "100%" }}>
+      <div className="errorgrid">
+        <Grid  container style={{ height: "100%" }}>
           {/*  */}
-          <Grid item sm={12} md={4}>
-            <Paper className={classes.paper}>
+          <Grid  item sm={12} md={4}>
+            <Paper  className={classes.paper}>
               <Grid className={classes.hidden} item sm={false} md={12}>
                 <h1 className={classes.heading}>
                   Certificate Verification Successfull
