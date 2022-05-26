@@ -65,7 +65,7 @@ class Services extends Component {
       
       <div className='hero-container'>
       
-      <h1 className="text-style1">Issue and Verify Certificates with Etherium Blockchain</h1>
+      <h1 className="text-style1">Issue and Verify Certificates with Ethereum Blockchain</h1>
       {/* <p className="text-style1">Here you GO!</p> */}
       <div className='hero-btns'>
       <Link to="/issue-certificate">
