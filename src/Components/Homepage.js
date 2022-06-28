@@ -11,7 +11,7 @@ function Homepage(props) {
       </p>
       <p className="text-style">
         <b>
-          -A Decentraised Application for Certificate Issuing and Verification-
+          -A Decentralised Application for Certificate Issuing and Verification-
         </b>
       </p>
     </header>
