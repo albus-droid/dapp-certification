@@ -48,10 +48,10 @@ class VerifySuccess extends Component {
     const { classes } = this.props;
     return (
       <div className="errorgrid">
-        <Grid  container style={{ height: "100%" }}>
+        <Grid container style={{ height: "100%" }}>
           {/*  */}
-          <Grid  item sm={12} md={4}>
-            <Paper  className={classes.paper}>
+          <Grid item sm={12} md={4}>
+            <Paper className={classes.paper}>
               <Grid className={classes.hidden} item sm={false} md={12}>
                 <h1 className={classes.heading}>
                   Certificate Verification Successfull
@@ -85,11 +85,17 @@ class VerifySuccess extends Component {
                   </tr>
                   <tr>
                     <th scope="row">Expire Date</th>
-                    <td>{this.props.certdetails[4]/60/60/24/365+1970}</td>
+                    <td>
+                      {this.props.certdetails[4] / 60 / 60 / 24 / 365 + 1970}
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">Issue Date</th>
-                    <td>{this.props.certdetails[5]/60/60/24/365+1970}</td>
+                    <td>
+                      {Math.floor(
+                        this.props.certdetails[5] / 60 / 60 / 24 / 365 + 1970
+                      )}
+                    </td>
                   </tr>
                   {/* <tr>
                     <th scope="row">LINK</th>
